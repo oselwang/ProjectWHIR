@@ -13,10 +13,7 @@
     class RegisterForm extends Form
     {
         protected $rules = [
-            'username' => 'required|min:8|unique:users',
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'password' => 'required|min:8|alpha_num|confirmed',
+            'name' => 'required',
             'phone' => 'numeric',
             'email' => 'email|unique:users'
         ];

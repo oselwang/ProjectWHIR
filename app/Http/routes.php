@@ -15,4 +15,17 @@
         return view('index');
     });
 
-    Route::get('register','AjaxController@postRegister');
+    Route::get('home',function(){
+        return view('home');
+    });
+
+    Route::get('form',function(){
+        return view('form');
+    });
+    
+    Route::get('abc',function(){
+        return view('strategy');
+    });
+    
+    
+    Route::post('register','AjaxController@postRegister');

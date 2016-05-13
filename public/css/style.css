@@ -110,7 +110,7 @@ h2.resp-accordion {
 }
 
 /*---------*/
-.register input[type="text"],.register input[type="password"] {
+.register input[type="text"],.register input[type="password"] ,.register input[type="email"]{
 	outline: none;
     font-size: 16px;
     color: #000000;

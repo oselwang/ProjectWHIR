@@ -9,6 +9,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <head>
 <title>Iwoc</title>
 <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css' />
+	<link href="{{asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -27,7 +28,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
 <div class="wrap">
-	<h1>Project WHIR</h1>
+	<h1 style="color:white">WHIR</h1>
 	<div class="main-content">
 		<div class="sap_tabs">	
 			 
@@ -43,7 +44,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 						<div class="register">
 							<form method="post" action="login" id="login-form">
-								<input placeholder="Email" class="mail" type="text" required="">
+								<input placeholder="Email" class="mail" type="email" required="">
 								<input placeholder="Phone" class="lock" type="password" required="">
 								<input type="submit" value="Login"/>
 							</form>
@@ -58,8 +59,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</ul>
 							</div>
 							<form method="post" action="register" id="register-form">
+								{{csrf_field()}}
 								<input placeholder="Name" name="name" type="text" required="">
-								<input placeholder="Email Address" name="email" type="text" required="">
+								<input placeholder="Email Address" name="email" type="email" required="">
 								<input placeholder="Phone" type="text" name="phone" required="">
 									<div class="sign-up">
 										<input type="submit" value="Create Account"/>
@@ -85,19 +87,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		window.location = url;
 	}
 
-	$('#register-form').submit(function () {
+	$('#register-form').submit(function (e) {
 		e.preventDefault();
 		var url = $('#register-form').attr('action');
 		var data = $('#register-form').serializeArray();
+		$('#error-register').text('');
 		$.ajax({
-			type:post,
-			data:data,
-			url:url,
+			type: 'post',
+			data: data,
+			url: url,
 			dataType:'json',
 			success:function () {
-				
+				redirect('home');
 			},
-			error:function () {
+			error:function (data) {
 				errors = $.parseJSON(data.responseText);
 				$('#flash-error-register').removeClass('hidden');
 				$.each(errors, function (index, value) {
