@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.31 on 2016-05-12.
+ * Generated for Laravel 5.2.31 on 2016-05-15.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -10893,6 +10893,214 @@ namespace {
          */
         public static function getNames(){
             return \Illuminate\View\Factory::getNames();
+        }
+        
+    }
+
+
+    class Flash extends \Laracasts\Flash\Flash{
+        
+        /**
+         * Flash an information message.
+         *
+         * @param string $message
+         * @return $this 
+         * @static 
+         */
+        public static function info($message){
+            return \Laracasts\Flash\FlashNotifier::info($message);
+        }
+        
+        /**
+         * Flash a success message.
+         *
+         * @param string $message
+         * @return $this 
+         * @static 
+         */
+        public static function success($message){
+            return \Laracasts\Flash\FlashNotifier::success($message);
+        }
+        
+        /**
+         * Flash an error message.
+         *
+         * @param string $message
+         * @return $this 
+         * @static 
+         */
+        public static function error($message){
+            return \Laracasts\Flash\FlashNotifier::error($message);
+        }
+        
+        /**
+         * Flash a warning message.
+         *
+         * @param string $message
+         * @return $this 
+         * @static 
+         */
+        public static function warning($message){
+            return \Laracasts\Flash\FlashNotifier::warning($message);
+        }
+        
+        /**
+         * Flash an overlay modal.
+         *
+         * @param string $message
+         * @param string $title
+         * @return $this 
+         * @static 
+         */
+        public static function overlay($message, $title = 'Notice'){
+            return \Laracasts\Flash\FlashNotifier::overlay($message, $title);
+        }
+        
+        /**
+         * Flash a general message.
+         *
+         * @param string $message
+         * @param string $level
+         * @return $this 
+         * @static 
+         */
+        public static function message($message, $level = 'info'){
+            return \Laracasts\Flash\FlashNotifier::message($message, $level);
+        }
+        
+        /**
+         * Add an "important" flash to the session.
+         *
+         * @return $this 
+         * @static 
+         */
+        public static function important(){
+            return \Laracasts\Flash\FlashNotifier::important();
+        }
+        
+    }
+
+
+    class Excel extends \Maatwebsite\Excel\Facades\Excel{
+        
+        /**
+         * Create a new file
+         *
+         * @param $filename
+         * @param callable|null $callback
+         * @return \Maatwebsite\Excel\LaravelExcelWriter 
+         * @static 
+         */
+        public static function create($filename, $callback = null){
+            return \Maatwebsite\Excel\Excel::create($filename, $callback);
+        }
+        
+        /**
+         * Load an existing file
+         *
+         * @param string $file The file we want to load
+         * @param callback|null $callback
+         * @param string|null $encoding
+         * @param bool $noBasePath
+         * @return \Maatwebsite\Excel\LaravelExcelReader 
+         * @static 
+         */
+        public static function load($file, $callback = null, $encoding = null, $noBasePath = false){
+            return \Maatwebsite\Excel\Excel::load($file, $callback, $encoding, $noBasePath);
+        }
+        
+        /**
+         * Set select sheets
+         *
+         * @param $sheets
+         * @return \Maatwebsite\Excel\LaravelExcelReader 
+         * @static 
+         */
+        public static function selectSheets($sheets = array()){
+            return \Maatwebsite\Excel\Excel::selectSheets($sheets);
+        }
+        
+        /**
+         * Select sheets by index
+         *
+         * @param array $sheets
+         * @return $this 
+         * @static 
+         */
+        public static function selectSheetsByIndex($sheets = array()){
+            return \Maatwebsite\Excel\Excel::selectSheetsByIndex($sheets);
+        }
+        
+        /**
+         * Batch import
+         *
+         * @param $files
+         * @param callback $callback
+         * @return \Maatwebsite\Excel\PHPExcel 
+         * @static 
+         */
+        public static function batch($files, $callback){
+            return \Maatwebsite\Excel\Excel::batch($files, $callback);
+        }
+        
+        /**
+         * Create a new file and share a view
+         *
+         * @param string $view
+         * @param array $data
+         * @param array $mergeData
+         * @return \Maatwebsite\Excel\LaravelExcelWriter 
+         * @static 
+         */
+        public static function shareView($view, $data = array(), $mergeData = array()){
+            return \Maatwebsite\Excel\Excel::shareView($view, $data, $mergeData);
+        }
+        
+        /**
+         * Create a new file and load a view
+         *
+         * @param string $view
+         * @param array $data
+         * @param array $mergeData
+         * @return \Maatwebsite\Excel\LaravelExcelWriter 
+         * @static 
+         */
+        public static function loadView($view, $data = array(), $mergeData = array()){
+            return \Maatwebsite\Excel\Excel::loadView($view, $data, $mergeData);
+        }
+        
+        /**
+         * Set filters
+         *
+         * @param array $filters
+         * @return \Maatwebsite\Excel\Excel 
+         * @static 
+         */
+        public static function registerFilters($filters = array()){
+            return \Maatwebsite\Excel\Excel::registerFilters($filters);
+        }
+        
+        /**
+         * Enable certain filters
+         *
+         * @param string|array $filter
+         * @param bool|false|string $class
+         * @return \Maatwebsite\Excel\Excel 
+         * @static 
+         */
+        public static function filter($filter, $class = false){
+            return \Maatwebsite\Excel\Excel::filter($filter, $class);
+        }
+        
+        /**
+         * Get register, enabled (or both) filters
+         *
+         * @param string|boolean $key [description]
+         * @return array 
+         * @static 
+         */
+        public static function getFilters($key = false){
+            return \Maatwebsite\Excel\Excel::getFilters($key);
         }
         
     }

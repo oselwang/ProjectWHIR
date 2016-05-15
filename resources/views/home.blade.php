@@ -6,19 +6,6 @@
 
     <div class="right_col" role="main">
 
-        <!-- top tiles -->
-        <div class="row tile_count">
-            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="glyphicon glyphicon-ok"></i> Total Completed Form</span>
-                <div class="count">2500</div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="glyphicon glyphicon-remove-circle"></i> Total Uncompleted Form</span>
-                <div class="count">123.50</div>
-            </div>
-        </div>
-        <!-- /top tiles -->
-
         <div class="features" id="features">
             <div class="row  ">
                 <div class="cherry-box  ">
@@ -78,7 +65,7 @@
                                                             <ul>
                                                                 <li>Has other terminal diseases</li>
                                                                 <li>Not willing to participate in registry</li>
-                                                                <li>Congenital disease</li>
+                                                                <li>Congenital diseaselay</li>
                                                             </ul>
                                                         </div>
                                                     </div>
