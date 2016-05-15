@@ -11,3 +11,5 @@ class TableController extends Controller
 {
     protected $variable;
     protected $user;
+
+}
