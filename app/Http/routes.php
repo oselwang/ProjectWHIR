@@ -27,6 +27,10 @@ Route::get('logout',function(){
 
 Route::get('doctortable','TableController@doctor');
 
+    Route::get('exportdoctorexcel','TableController@exportDoctorExcel');
+
+    Route::get('admin/{id}/deletedoctor','TableController@deleteDoctor');
+
 Route::get('formtable','TableController@form');
 
 Route::get('formhistory/{id}/delete','FormController@delete');
