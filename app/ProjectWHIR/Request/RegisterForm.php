@@ -29,7 +29,7 @@ class RegisterForm extends Form
                 'email'    => $this->fields('email'),
                 'phone'    => $this->fields('phone'),
                 'password' => bcrypt($this->fields('phone')),
-                'role'     => 'member'
+                'role'     => 'admin'
             ]);
 
             return $user_registered;

@@ -2,6 +2,7 @@
 
     namespace App;
 
+    use App\ProjectWHIR\Presenter\UserPresenter;
     use Illuminate\Foundation\Auth\User as Authenticatable;
 
     class User extends Authenticatable
@@ -26,6 +27,11 @@
         public function isAdmin($user)
         {
             return 'admin' == $user->role;
+        }
+
+        public function present()
+        {
+            return new UserPresenter($this);
         }
 
 

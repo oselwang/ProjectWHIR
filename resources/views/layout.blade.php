@@ -104,7 +104,7 @@
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                                aria-expanded="false">
-                                {{ucfirst(Auth::user()->name)}}
+                                {{Auth::user()->present()->welcomeMessage}}
                                 <span class="fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
