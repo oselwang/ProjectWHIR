@@ -11,6 +11,9 @@
     @stop
     @section('content')
             <!-- Datatables -->
+    <!-- Datatables -->
+
+    <!-- /Datatables -->
 
     <!-- page content -->
     <div class="right_col" role="main">
@@ -25,7 +28,7 @@
                 <div class="title">
                     <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
+                                <input type="text" id="search" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
                               <button class="btn btn-default" type="button">Go!</button>
                           </span>
@@ -46,7 +49,8 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <a href="exportdoctorexcel" class="btn btn-success @if(count($users) == 0)disabled @endif">Export
+                                <a href="exportdoctorexcel"
+                                   class="btn btn-success @if(count($users) == 0)disabled @endif">Export
                                     to Excel</a>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -70,9 +74,9 @@
                                     </thead>
                                     <tbody>
                                     @foreach($users as $user)
-                                        <tr>
+                                        <tr id="trdatatable">
                                             <td>#</td>
-                                            <td>
+                                            <td id="name">
                                                 <a>{{$user->name}}</a>
                                                 <br/>
                                             </td>
@@ -92,7 +96,8 @@
                                                 {{count($variables->where('user_id',$user->id))}}
                                             </td>
                                             <td>
-                                                <a href="admin/{{$user->id}}/deletedoctor" class="btn btn-danger btn-xs"><i
+                                                <a href="admin/{{$user->id}}/deletedoctor"
+                                                   class="btn btn-danger btn-xs"><i
                                                             class="fa fa-trash-o"></i>
                                                     Delete
                                                 </a>
@@ -109,72 +114,22 @@
             </div>
         </div>
         <!-- /page content -->
+        <script>
+            $("#search").on('keyup', function() {
+                var value = $(this).val();
+
+                $("#datatable #trdatatable").each(function(index) {
+                    if($(this).text().search(new RegExp(value, "i"))<0){
+                        $(this).fadeOut();
+                    }else{
+                        $(this).fadeIn();
+                    }
+                });
+            });
+
+
+        </script>
         @stop
 
 
-                <!-- Datatables -->
-        <script>
-            $(document).ready(function () {
-                var handleDataTableButtons = function () {
-                    if ($("#datatable-buttons").length) {
-                        $("#datatable-buttons").DataTable({
-                            dom: "Bfrtip",
-                            buttons: [
-                                {
-                                    extend: "copy",
-                                    className: "btn-sm"
-                                },
-                                {
-                                    extend: "csv",
-                                    className: "btn-sm"
-                                },
-                                {
-                                    extend: "excel",
-                                    className: "btn-sm"
-                                },
-                                {
-                                    extend: "pdfHtml5",
-                                    className: "btn-sm"
-                                },
-                                {
-                                    extend: "print",
-                                    className: "btn-sm"
-                                },
-                            ],
-                            responsive: true
-                        });
-                    }
-                };
 
-                TableManageButtons = function () {
-                    "use strict";
-                    return {
-                        init: function () {
-                            handleDataTableButtons();
-                        }
-                    };
-                }();
-
-                $('#datatable').dataTable();
-                $('#datatable-keytable').DataTable({
-                    keys: true
-                });
-
-                $('#datatable-responsive').DataTable();
-
-                $('#datatable-scroller').DataTable({
-                    ajax: "js/datatables/json/scroller-demo.json",
-                    deferRender: true,
-                    scrollY: 380,
-                    scrollCollapse: true,
-                    scroller: true
-                });
-
-                var table = $('#datatable-fixed-header').DataTable({
-                    fixedHeader: true
-                });
-
-                TableManageButtons.init();
-            });
-        </script>
-        <!-- /Datatables -->
